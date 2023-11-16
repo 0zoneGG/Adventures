@@ -83,69 +83,27 @@ body {
   color: #fff;
 }
 
-.hero-section {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 95vh;
-  padding: 0 15px;
-  max-width: 1200px;
-  margin: 0 auto;
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
 }
 
-.hero-section .hero {
-  max-width: 50%;
-  color: #fff;
+table, th, td {
+    border: 1px solid #ddd;
 }
 
-.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #c9c7c7;
-}
-
-.hero-section .img img {
-  width: 517px;
-}
-
-.hero-section .buttons {
-  margin-top: 40px;
-}
-
-.hero-section .buttons a {
-  text-decoration: none;
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 0.375rem;
-  font-weight: 600;
-  transition: 0.2s ease;
-  display: inline-block;
-}
-
-.hero-section .buttons a:not(:last-child) {
-  margin-right: 15px;
-}
-
-.buttons .join {
-  background-color: #47b2e4;
-}
-
-.hero-section .buttons .learn {
-  border: 1px solid #fff;
-  border-radius: 0.375rem;
-}
-
-.hero-section .buttons a:hover {
-  background-color: #47b2e4;
+th, td {
+    padding: 10px;
+    text-align: left;
 }
 
 #menu-toggle {
   display: none;
+}
+
+#search{
+  margin-top: 100px;
 }
 
 #hamburger-btn {
@@ -155,6 +113,7 @@ body {
   display: none;
   order: 1;
 }
+
 
 @media screen and (max-width: 1023px) {
   .navbar .logo a {
