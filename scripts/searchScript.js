@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function populateDropdown(selectElement, dataArray) {
   // Remove existing options
-  selectElement.innerText = "";
+  selectElement.innerHTML = "";
 
   // Add a default option
   const defaultOption = document.createElement("option");
@@ -38,7 +38,7 @@ function searchParks() {
   // Filter parks based on selected location and type
   const filteredParks = nationalParksArray.filter((park) => {
     const locationCondition = selectedLocation === "all" || park.State === selectedLocation;
-    const typeCondition = selectedType === "all" || parkTypesArray.includes(park.LocationName);
+    const typeCondition = selectedType === "all" || getParkType(park.LocationName) === selectedType;
 
     return locationCondition && typeCondition;
   });
@@ -54,23 +54,38 @@ function displayParks(parks) {
   console.log("Table Body:", tableBody);
 
   // Clear existing table rows
-  tableBody.innerText = "";
+  tableBody.innerHTML = "";
 
   // Populate the table with the filtered parks
   parks.forEach((park) => {
     const row = tableBody.insertRow();
     row.insertCell(0).innerText = park.LocationName;
     row.insertCell(1).innerText = park.State;
-    row.insertCell(2).innerText = park.Address;
-    row.insertCell(3).innerText = park.Phone;
-    row.insertCell(4).innerText = park.Latitude;
-    row.insertCell(5).innerText = park.Longitude;
-    row.insertCell(6).innerText = getParkType(park.LocationName);
+    row.insertCell(2).innerText = park.City;
+    row.insertCell(3).innerText = park.Address;
+    row.insertCell(4).innerText = park.Phone;
+    row.insertCell(5).innerText = park.Latitude;
+    row.insertCell(6).innerText = park.Longitude;
+
+
+
+    // Display only the park type in the park type table
+    row.insertCell(7).innerText = getParkType(park.LocationName);
   });
 }
 
 function getParkType(locationName) {
-  // Find the park type based on the location name
-  const park = nationalParksArray.find((park) => park.LocationName === locationName);
-  return park ? park.LocationName : "N/A";
+  // Split the location name into words
+  const words = locationName.split(' ');
+
+  // Get the last 1-3 words
+  const lastWords = words.slice(-3);
+
+  // Join the last words to form the potential park type
+  const potentialParkType = lastWords.join(' ');
+
+  // Find the park type in the parkTypesArray
+  const foundParkType = parkTypesArray.find(type => potentialParkType.includes(type));
+
+  return foundParkType || "N/A";
 }

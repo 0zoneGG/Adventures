@@ -10,6 +10,7 @@ const parkTypesArray = [
     "Island",
     "River",
     "Seashore",
-    "Trail",
+    
     "Parkway"
+
 ]
