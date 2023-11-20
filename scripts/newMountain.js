@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function createMountainCard(mountain) {
         // Create card container
         const cardContainer = document.createElement("div");
-        cardContainer.classList.add("card", "col-md-2", "m-4");
+        cardContainer.classList.add("card", "col-md-3", "mb-4"); // Adjust the col-md-3 for a wider card
 
         // Create image element
         const img = document.createElement("img");
@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         cardTitle.classList.add("card-title");
         cardTitle.textContent = mountain.name;
 
+        cardBody.style.padding = "15px";
+        
         // Create card text elements
         const elevationText = createCardText("Elevation: " + mountain.elevation + " ft");
         const effortText = createCardText("Effort: " + mountain.effort);

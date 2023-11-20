@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  
+}
+
+.container.mt-3 {
+  width: 100%;
+
+}
+
+#mountainCards{
+margin: 100px;
+width: 100%;
+}
+
+#mountainCards.row{
+  flex: 1;
+  }
