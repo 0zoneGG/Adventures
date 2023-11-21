@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function populateDropdown(selectElement, dataArray) {
   // Remove existing options
-  selectElement.innerHTML = "";
+  selectElement.innerText = "";
 
   // Add a default option
   const defaultOption = document.createElement("option");
@@ -54,7 +54,7 @@ function displayParks(parks) {
   console.log("Table Body:", tableBody);
 
   // Clear existing table rows
-  tableBody.innerHTML = "";
+  tableBody.innerText = "";
 
   // Populate the table with the filtered parks
   parks.forEach((park) => {
@@ -65,11 +65,7 @@ function displayParks(parks) {
     row.insertCell(3).innerText = park.Address;
     row.insertCell(4).innerText = park.Phone;
     row.insertCell(5).innerText = park.Latitude;
-    row.insertCell(6).innerText = park.Longitude;
-
-
-
-    // Display only the park type in the park type table
+    row.insertCell(6).innerText = park.Longitude;    // Display only the park type in the park type table
     row.insertCell(7).innerText = getParkType(park.LocationName);
   });
 }
