@@ -56,16 +56,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to render mountain cards
-    function renderMountainCards() {
+    function renderMountainCards(mountainsToRender) {
         const mountainCardsContainer = document.getElementById("mountainCards");
+        mountainCardsContainer.innerHTML = ""; // Clear existing cards
 
-        // Loop through mountainsArray and create a card for each mountain
-        mountainsArray.forEach((mountain) => {
+        // Loop through provided mountains array and create a card for each mountain
+        mountainsToRender.forEach((mountain) => {
             const card = createMountainCard(mountain);
             mountainCardsContainer.appendChild(card);
         });
     }
 
-    // Call the function to render mountain cards
-    renderMountainCards();
+    // Call the function to render all mountain cards initially
+    renderMountainCards(mountainsArray);
+
+    // Populate the dropdown with mountain names
+    const dropdown = document.getElementById("mountainDropdown");
+    const uniqueMountainNames = Array.from(new Set(mountainsArray.map(mountain => mountain.name)));
+    
+    // Populate the dropdown options
+    uniqueMountainNames.forEach((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        dropdown.appendChild(option);
+    });
+
+    // Add event listener to the dropdown to filter mountain cards
+    dropdown.addEventListener("change", function () {
+        const selectedMountainName = dropdown.value;
+        const filteredMountains = selectedMountainName
+            ? mountainsArray.filter(mountain => mountain.name === selectedMountainName)
+            : mountainsArray;
+
+        renderMountainCards(filteredMountains);
+    });
 });
